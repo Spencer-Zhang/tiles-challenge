@@ -1,0 +1,15 @@
+// Place all the styles related to the tiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: white;
+
+  .tile {
+    display: inline-block;
+    background-color: #ddddff;
+    height: 80px;
+    width: 80px;
+    margin: 2px;
+  }
+}
