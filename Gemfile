@@ -19,6 +19,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'sidekiq'
 gem 'json'
 
+group :production do
+  gem "rails_12factor"
+end
+
 group :test do
   gem 'database_cleaner'
   gem 'capybara'
