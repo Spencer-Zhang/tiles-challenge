@@ -3,6 +3,19 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  clickCount = 0
+
+  loadMostClicked = () ->
+    $.ajax '/tiles/most_clicked',
+      type: "GET",
+      dataType: "text",
+      success: (data) ->
+        $('.container').html(data)
+
+  incrementClickCount = () ->
+    clickCount += 1
+    loadMostClicked() if(clickCount == 64)
+
   $('.tile').click ->
     self = this
     $.ajax '/tiles/update', 
@@ -10,6 +23,10 @@ $ ->
       data: {name: $(self).text()},
       success: (data) ->
         $(self).css('background-color', 'white')
-        $(self).text(".")
+        $(self).text("")
+        $(self).off()
+        incrementClickCount()
       error: () ->
         $(self).css('background-color', 'red')
+        $(self).off()
+        incrementClickCount()

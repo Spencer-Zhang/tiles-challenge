@@ -12,8 +12,24 @@
     position: relative;
     display: inline-block;
     background-color: #ddddff;
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     margin: 2px;
+    padding: 10px;
+  }
+}
+
+.chart {
+  position:relative;
+  margin: 0 auto;
+  width: 600px;
+
+  .title {
+    position:absolute;
+  }
+
+  .count {
+    position: absolute;
+    left: 300px
   }
 }

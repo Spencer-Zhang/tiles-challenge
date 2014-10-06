@@ -1,0 +1,11 @@
+div class="chart"
+  span class="title"
+    b Band Name
+  span class="count"
+    b Clicks
+  <br>
+
+  - @tiles.each do |tile|
+    span class="title" = tile['name']
+    span class="count" = tile['click_count']
+    <br>

@@ -4,7 +4,7 @@ class TilesController < ApplicationController
   end
 
   def update
-    raise "Error" if params["name"] == "13"
+    raise "Error" if params["name"] == "ERROR"
 
     tile = Tile.find_by(name: params["name"])
     tile.click_count += 1
@@ -14,7 +14,10 @@ class TilesController < ApplicationController
   end
 
   def most_clicked
-    tiles = Tile.all.sort(click_count: -1).limit(10)
-    render json: tiles.as_json
+    @tiles = Tile.all.sort(click_count: -1).limit(10)
+    respond_to do |format|
+      format.html { render layout: true }
+      format.text { render layout: false }
+    end
   end
 end

@@ -8,7 +8,7 @@
 
 Tile.collection.drop
 
-Tile.create(name: "**error**!") # Raises an error if clicked on
+Tile.create(name: "ERROR") # Raises an error if clicked on
 
 bandnames = []
 
