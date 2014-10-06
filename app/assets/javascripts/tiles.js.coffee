@@ -12,4 +12,4 @@ $ ->
         $(self).css('background-color', 'white')
         $(self).text(".")
       error: () ->
-        console.log('an error occurred')
+        $(self).css('background-color', 'red')
