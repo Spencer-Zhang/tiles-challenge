@@ -3,8 +3,13 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  console.log("Javascript is loaded!")
-
   $('.tile').click ->
-    $(this).css('background-color', 'white')
-    $(this).text('')
+    self = this
+    $.ajax '/tiles/update', 
+      type: 'PUT',
+      data: {name: $(self).text()},
+      success: (data) ->
+        $(self).css('background-color', 'white')
+        $(self).text(".")
+      error: () ->
+        console.log('an error occurred')
