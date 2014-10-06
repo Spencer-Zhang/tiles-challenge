@@ -9,7 +9,8 @@ TilesChallenge::Application.routes.draw do
 
   root 'tiles#index'
 
-  put 'tiles/update' => 'tiles#update'
+  put 'tiles/update'        => 'tiles#update'
+  get 'tiles/most_clicked'  => 'tiles#most_clicked'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

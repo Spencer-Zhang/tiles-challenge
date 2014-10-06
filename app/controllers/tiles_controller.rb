@@ -1,9 +1,7 @@
 class TilesController < ApplicationController
   def index
-    @tiles = []
-    Tile.each do |tile|
-      @tiles << tile
-    end
+    @tiles = Tile.all.as_json
+    p @tiles
   end
 
   def update
@@ -13,6 +11,11 @@ class TilesController < ApplicationController
     tile.click_count += 1
     tile.save
 
-    render json: ['Success']
+    render nothing: true
+  end
+
+  def most_clicked
+    tiles = Tile.all.sort(click_count: -1).limit(10)
+    render json: tiles.as_json
   end
 end
