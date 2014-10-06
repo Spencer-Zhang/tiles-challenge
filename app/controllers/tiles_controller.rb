@@ -1,7 +1,6 @@
 class TilesController < ApplicationController
   def index
-    @tiles = Tile.all.as_json
-    p @tiles
+    @tiles = Tile.all.as_json.shuffle!
   end
 
   def update

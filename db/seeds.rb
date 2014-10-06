@@ -7,4 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Tile.collection.drop
-FactoryGirl.create_list(:tile, 64)
+
+Tile.create(name: "**error**!") # Raises an error if clicked on
+
+bandnames = []
+
+File.open('db/bandnames.txt') do |f|
+  f.lines.each { |line| bandnames << line.strip }
+end
+
+bandnames.shuffle!
+
+63.times do
+  Tile.create(name: bandnames.pop)
+end
