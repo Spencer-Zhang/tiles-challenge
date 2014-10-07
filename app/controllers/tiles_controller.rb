@@ -4,8 +4,8 @@ class TilesController < ApplicationController
   end
 
   def update
-    TileWorker.perform_async(params["name"], Time.now)
-    render nothing: true
+    job_id = TileWorker.perform_async(params["name"], Time.now)
+    render json: {job_id: job_id}
   end
 
   def most_clicked

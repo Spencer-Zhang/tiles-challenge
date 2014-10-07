@@ -6,8 +6,6 @@ TilesChallenge::Application.routes.draw do
   require 'sidekiq-status/web'
   mount Sidekiq::Web  => 'sidekiq'
 
-
-
   root 'tiles#index'
 
   put 'tiles/update'        => 'tiles#update'

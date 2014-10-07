@@ -19,6 +19,20 @@ $ ->
     loadMostClicked() if(clickCount == 64)
 
 
+  checkJobStatus = (element, jobID) ->
+    $.ajax '/tiles/job_status', 
+      type: 'GET',
+      data: {jobID:jobID}, 
+      success: (data) ->
+        if data["status"] == "complete"
+          $(element).animate({opacity: 0}, 'fast')
+        else if data["status"] == "failed"
+          $(element).css('background-color', 'red')
+        else
+          setTimeout ->
+            checkJobStatus(element, jobID)
+          , 500
+
 
   $('.tile').click ->
     self = this
@@ -29,6 +43,5 @@ $ ->
       type: 'PUT',
       data: {name: $(self).text()},
       success: (data) ->
-        $(self).animate({opacity: 0}, 'fast')
-      error: () ->
-        $(self).css('background-color', 'red')
+        checkJobStatus(self, data["job_id"]),
+        
