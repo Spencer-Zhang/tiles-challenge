@@ -19,6 +19,7 @@ $ ->
     loadMostClicked() if(clickCount == 64)
 
 
+
   $('.tile').click ->
     self = this
     $(self).off()
@@ -28,7 +29,6 @@ $ ->
       type: 'PUT',
       data: {name: $(self).text()},
       success: (data) ->
-        $(self).css('background-color', 'white')
-        $(self).text("")
+        $(self).animate({opacity: 0}, 'fast')
       error: () ->
         $(self).css('background-color', 'red')

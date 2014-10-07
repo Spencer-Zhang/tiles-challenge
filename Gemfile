@@ -19,6 +19,7 @@ gem 'slim'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'sidekiq'
+gem 'sidekiq-status'
 gem 'json'
 
 group :production do

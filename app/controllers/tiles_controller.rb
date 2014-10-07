@@ -4,12 +4,7 @@ class TilesController < ApplicationController
   end
 
   def update
-    raise "Error" if params["name"] == "ERROR"
-
-    tile = Tile.find_by(name: params["name"])
-    tile.click_count += 1
-    tile.save
-
+    TileWorker.perform_async(params["name"], Time.now)
     render nothing: true
   end
 
@@ -19,5 +14,10 @@ class TilesController < ApplicationController
       format.html { render layout: true }
       format.text { render layout: false }
     end
+  end
+
+  def job_status
+    job_id = params["jobID"]
+    render json: {status: Sidekiq::Status::status(job_id)}
   end
 end

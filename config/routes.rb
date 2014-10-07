@@ -3,6 +3,7 @@ TilesChallenge::Application.routes.draw do
   # Sidekiq web interface
   #   acess via localhost:3000/sidekiq
   require 'sidekiq/web'
+  require 'sidekiq-status/web'
   mount Sidekiq::Web  => 'sidekiq'
 
 
@@ -11,6 +12,7 @@ TilesChallenge::Application.routes.draw do
 
   put 'tiles/update'        => 'tiles#update'
   get 'tiles/most_clicked'  => 'tiles#most_clicked'
+  get 'tiles/job_status'    => 'tiles#job_status'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
