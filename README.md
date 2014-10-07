@@ -2,8 +2,6 @@
 
 This repo is hosted on Heroku at http://tiles-challenge-6178.herokuapp.com/
 
-Note: If the click counts aren't updating correctly on Heroku, it's probably because I turned off the worker dynos.
-
 
 ## Specs
 
