@@ -29,6 +29,8 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem 'mongoid-rspec', '>= 1.4.6'
   gem 'timecop'
 end
