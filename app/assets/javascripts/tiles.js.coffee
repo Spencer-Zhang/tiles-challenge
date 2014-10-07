@@ -43,5 +43,4 @@ $ ->
       type: 'PUT',
       data: {name: $(self).text()},
       success: (data) ->
-        checkJobStatus(self, data["job_id"]),
-        
+        checkJobStatus(self, data["job_id"])
