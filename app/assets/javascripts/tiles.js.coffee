@@ -24,19 +24,22 @@ $ ->
       type: 'GET',
       data: {jobID:jobID}, 
       success: (data) ->
-        if data["status"] == "complete"
-          $(element).animate({opacity: 0}, 'fast')
-        else if data["status"] == "failed"
+        if data["status"] == "failed"
+          $(element).css('opacity', 1)
           $(element).css('background-color', 'red')
-        else
+        else if data["status"] != "complete"
           setTimeout ->
             checkJobStatus(element, jobID)
           , 500
+      ,error: () ->
+        $(element).css('opacity', 1)
+        $(element).css('background-color', 'red')
 
 
   $('.tile').click ->
     self = this
     $(self).off()
+    $(self).css(opacity: 0)
     incrementClickCount()
 
     $.ajax '/tiles/update', 
@@ -44,3 +47,6 @@ $ ->
       data: {name: $(self).text()},
       success: (data) ->
         checkJobStatus(self, data["job_id"])
+      , error: () ->
+        $(self).css('opacity', 1)
+        $(self).css('background-color', 'red')
