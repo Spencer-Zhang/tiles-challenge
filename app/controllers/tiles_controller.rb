@@ -4,7 +4,7 @@ class TilesController < ApplicationController
   end
 
   def update
-    if params["name"] == "ERROR"
+    if params["name"] == "ERROR" # Used for testing server-side error handling
       render nothing:true, status: 500
     else
       job_id = TileWorker.perform_async(params["name"], Time.now)
