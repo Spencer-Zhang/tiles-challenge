@@ -42,7 +42,7 @@ $ ->
     $(self).css(opacity: 0)
     incrementClickCount()
 
-    $.ajax '/tiles/update', 
+    $.ajax '/tiles/click', 
       type: 'PUT',
       data: {name: $(self).text()},
       success: (data) ->

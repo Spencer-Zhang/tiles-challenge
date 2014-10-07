@@ -3,7 +3,7 @@ class TilesController < ApplicationController
     @tiles = Tile.all.as_json.shuffle!
   end
 
-  def update
+  def click
     if params["name"] == "ERROR" # Used for testing server-side error handling
       render nothing:true, status: 500
     else
@@ -13,7 +13,7 @@ class TilesController < ApplicationController
   end
 
   def most_clicked
-    @tiles = Tile.all.sort(click_count: -1).limit(10)
+    @tiles = Tile.all.sort(click_count: -1).limit(10).as_json
     respond_to do |format|
       format.html { render layout: true }
       format.text { render layout: false }

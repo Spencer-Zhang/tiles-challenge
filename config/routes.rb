@@ -8,7 +8,7 @@ TilesChallenge::Application.routes.draw do
 
   root 'tiles#index'
 
-  put 'tiles/update'        => 'tiles#update'
+  put 'tiles/click'        => 'tiles#click'
   get 'tiles/most_clicked'  => 'tiles#most_clicked'
   get 'tiles/job_status'    => 'tiles#job_status'
 
